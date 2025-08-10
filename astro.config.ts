@@ -23,7 +23,7 @@ const {
 
 // https://astro.build/config
 const config = defineConfig({
-  site: 'https://spectre.louisescher.dev',
+  site: 'https://bandi.one',
   output: 'static',
   integrations: [
     expressiveCode({
@@ -32,15 +32,15 @@ const config = defineConfig({
     mdx(),
     sitemap(),
     spectre({
-      name: 'Spectre',
+      name: 'Bandi.dev',
       openGraph: {
         home: {
-          title: 'Spectre',
-          description: 'A minimalistic theme for Astro.'
+          title: 'Bandi.dev',
+          description: '一個正在經營一間開發公司的台灣大學生'
         },
         blog: {
           title: 'Blog',
-          description: 'News and guides for Spectre.'
+          description: '閒雜小事都丟在這裡'
         },
         projects: {
           title: 'Projects'
