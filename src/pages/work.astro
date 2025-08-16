@@ -1,0 +1,265 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Icon from '../components/Icon.astro';
+import { getCollection } from 'astro:content';
+
+const workExperience = await getCollection('workExperience');
+
+// 统计工作状态
+const currentJobs = workExperience.filter(entry => 
+	entry.data.duration.includes('現在') || entry.data.duration.includes('~')
+).length;
+
+const pastJobs = workExperience.length - currentJobs;
+---
+
+<Layout title="工作經歷 - Bandi" description="查看我的完整工作經歷和職業發展歷程">
+	<div class="layout-grid-left" slot="left">
+		<Card>
+			<div class="header-container">
+				<Icon type='lucide' name="briefcase-business" width={24} height={24} class='glow-icon' />
+				<h2>工作狀態統計</h2>
+			</div>
+			<div class="work-stats">
+				<div class="stat-item current">
+					<Icon type='lucide' name="play-circle" width={26} height={26} />
+					<div class="stat-info">
+						<span class="stat-number">{currentJobs}</span>
+						<span class="stat-label">正在進行</span>
+					</div>
+				</div>
+				<div class="stat-item past">
+					<Icon type='lucide' name="check-circle" width={26} height={26} />
+					<div class="stat-info">
+						<span class="stat-number">{pastJobs}</span>
+						<span class="stat-label">曾經參與</span>
+					</div>
+				</div>
+				<div class="stat-item total">
+					<Icon type='lucide' name="briefcase" width={26} height={26} />
+					<div class="stat-info">
+						<span class="stat-number">{workExperience.length}</span>
+						<span class="stat-label">總計經歷</span>
+					</div>
+				</div>
+			</div>
+		</Card>
+	</div>
+	
+	<div class="layout-grid-right" slot="right">
+		<Card>
+			<div class="header-container">
+				<Icon type='lucide' name="briefcase-business" width={24} height={24} class='glow-icon' />
+				<h2>完整工作經歷</h2>
+			</div>
+			<div class="content-container">
+				{workExperience.map((entry) => (
+					<div class="work-entry">
+						<div class="work-entry-header">
+							<div class="work-entry-duration">
+								<Icon type='lucide' name="calendar" width={24} height={24} />
+								<span>{entry.data.duration}</span>
+							</div>
+							{(entry.data.duration.includes('現在') || entry.data.duration.includes('~')) && (
+								<span class="current-badge">進行中</span>
+							)}
+						</div>
+						<h3 class="work-entry-title">{entry.data.title}</h3>
+						<div class="work-entry-company">
+							<Icon type='lucide' name="building" width={24} height={24} />
+							<span>{entry.data.company}</span>
+						</div>
+						<p class="work-entry-description">{entry.data.description}</p>
+					</div>
+				))}
+			</div>
+		</Card>
+	</div>
+</Layout>
+
+<style>
+	.work-stats {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.stat-item {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 1rem;
+		border: 1px solid #353535;
+		border-radius: 0.5rem;
+		transition: all 0.2s ease;
+	}
+
+	.stat-item svg {
+		flex-shrink: 0;
+		color: var(--primary-light);
+	}
+
+	.stat-item.current svg {
+		color: #10b981;
+	}
+
+	.stat-item.past svg {
+		color: #9ca3af;
+	}
+
+	.stat-item:hover {
+		border-color: var(--primary);
+		background: rgba(140, 92, 245, 0.05);
+	}
+
+	.stat-item.current {
+		border-color: #10b981;
+	}
+
+	.stat-item.current:hover {
+		border-color: #10b981;
+		background: rgba(16, 185, 129, 0.05);
+	}
+
+	.stat-item.past {
+		border-color: #6b7280;
+	}
+
+	.stat-item.past:hover {
+		border-color: #6b7280;
+		background: rgba(107, 114, 128, 0.05);
+	}
+
+	.stat-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.stat-number {
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: var(--primary-light);
+	}
+
+	.stat-item.current .stat-number {
+		color: #10b981;
+	}
+
+	.stat-item.past .stat-number {
+		color: #9ca3af;
+	}
+
+	.stat-label {
+		font-size: 0.875rem;
+		color: rgba(255, 255, 255, 0.7);
+		font-weight: 500;
+	}
+
+	/* Fix for header alignment */
+	.header-container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	.header-container h2 {
+		margin: 0;
+		line-height: 1.2;
+		font-weight: 600;
+	}
+
+	.content-container {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.work-entry {
+		padding: 1.5rem;
+		border: 1px solid #353535;
+		border-radius: 0.5rem;
+		transition: all 0.2s ease;
+	}
+
+	.work-entry:hover {
+		border-color: var(--primary);
+		background: rgba(140, 92, 245, 0.05);
+	}
+
+	.work-entry-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
+
+	.work-entry-duration {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--primary-light);
+		font-weight: 500;
+		font-size: 0.9rem;
+	}
+
+	.work-entry-duration svg {
+		flex-shrink: 0;
+		color: var(--primary-light);
+	}
+
+	.current-badge {
+		background: var(--primary);
+		color: white;
+		padding: 0.25rem 0.75rem;
+		border-radius: 1rem;
+		font-size: 0.75rem;
+		font-weight: 500;
+	}
+
+	.work-entry-title {
+		margin: 0 0 0.5rem 0;
+		font-size: 1.25rem;
+		font-weight: 600;
+	}
+
+	.work-entry-company {
+		margin: 0 0 1rem 0;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: rgba(255, 255, 255, 0.8);
+		font-weight: 500;
+	}
+
+	.work-entry-company svg {
+		flex-shrink: 0;
+		color: rgba(255, 255, 255, 0.6);
+	}
+
+	.work-entry-description {
+		margin: 0;
+		line-height: 1.6;
+		color: rgba(255, 255, 255, 0.9);
+	}
+
+	@media (max-width: 768px) {
+		.work-entry-header {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.5rem;
+		}
+		
+		.stat-item {
+			padding: 0.75rem;
+		}
+		
+		.stat-number {
+			font-size: 1.25rem;
+		}
+	}
+</style>
+

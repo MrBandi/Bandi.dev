@@ -53,20 +53,6 @@ p, div, span, h1, h2, h3, h4, h5, h6, li, td, th {
   font-family: 'Noto Sans TC', 'Geist', sans-serif !important;
 }
 
-/* Test: Add visible indication if Noto Sans TC is not loading */
-body::before {
-  content: "Font Test: Should see Noto Sans TC for Chinese";
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background: rgba(0,0,0,0.8);
-  color: white;
-  padding: 5px;
-  font-size: 12px;
-  z-index: 9999;
-  font-family: 'Noto Sans TC', serif;
-}
-
 /* Restore English-preferred fonts for specific elements */
 code, pre, kbd, samp, var, .code, .mono {
   font-family: 'Geist Mono', 'Noto Sans TC', monospace !important;

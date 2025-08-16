@@ -107,7 +107,9 @@ const { Content: About } = await render(about!);
 				<h2>打工人的經驗</h2>
 			</div>
 			<div class="work-experience-container">
-				{workExperience.reverse().map((entry) => (
+				{workExperience
+					.slice(0, 3)
+					.map((entry) => (
 					<div class="work-experience-entry">
 						<span class="work-experience-duration">{entry.data.duration}</span>
 						<h3 class="work-experience-company">{entry.data.company}</h3>
@@ -115,6 +117,12 @@ const { Content: About } = await render(about!);
 						<p class="work-experience-desc">{entry.data.description}</p>
 					</div>
 				))}
+			</div>
+			<div class="work-experience-footer">
+				<a href="/work" class="work-experience-more-btn">
+					查看完整工作經歷
+					<Icon type='lucide' name="arrow-right" width={16} height={16} />
+				</a>
 			</div>
 		</Card>
 	</div>

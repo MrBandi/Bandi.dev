@@ -1,9 +1,65 @@
 [
   {
     "id": 1,
-    "duration": "2024 - present",
-    "company": "Astro Community",
-    "title": "Astro Theme",
-    "description": "Existing as an Astro theme for anyone to use."
+    "title": "工作人員",
+    "duration": "2025/01 ~ ",
+    "company": "CursHosting",
+    "description": "專為遊戲伺服器提供測試用機器託管服務。"
+  },
+  {
+    "id": 2,
+    "title": "LunarHosts 經營者",
+    "duration": "2024/05 - 2025/01",
+    "company": "LunarHosts",
+    "description": "提供 Discord Bot 託管、網頁託管服務。"
+  },
+  {
+    "id": 3,
+    "title": "SITCON CAMP 2024 資訊組",
+    "duration": "2024/08 - 2024/08",
+    "company": "SITCON",
+    "description": "負責更新及修復點數系統。"
+  },
+  {
+    "id": 4,
+    "title": "企鵝窩競賽社群 - 群主/主辦方",
+    "duration": "2023/05 - 現在",
+    "company": "企鵝窩競賽社群",
+    "description": "每年暑假都會舉辦 特戰英豪、APEX 等遊戲競賽。"
+  },
+  {
+    "id": 5,
+    "title": "FiveM 胖海熊伺服器 技術人員",
+    "duration": "2023/12 - 2024/02",
+    "company": "胖海熊伺服器",
+    "description": "修改及更新插件。"
+  },
+  {
+    "id": 6,
+    "title": "FiveM 插件開發者",
+    "duration": "2021 - 現在",
+    "company": "FiveM 社群",
+    "description": "開發 FiveM 插件，提供各種功能、娛樂遊戲等。"
+  },
+  {
+    "id": 7,
+    "title": "FiveM 伺服器服主",
+    "duration": "2019 - 2023",
+    "company": "FiveM 社群",
+    "description": "經營多個伺服器，期間開始接觸 Lua 語言，開發伺服器插件。"
+  },
+  {
+    "id": 8,
+    "title": "Discord Bot 開發者",
+    "duration": "2019 - 2023",
+    "company": "個人專案",
+    "description": "開發 Discord Bot，提供各種功能，群組管理、小遊戲、自動回覆等。"
+  },
+  {
+    "id": 9,
+    "title": "Minecraft 夢飛翔伺服器 創造者",
+    "duration": "2018 - 2019",
+    "company": "Minecraft 夢飛翔伺服器",
+    "description": "服主身分"
   }
 ]

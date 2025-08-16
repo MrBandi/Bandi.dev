@@ -96,3 +96,29 @@
   /* Ensure transform doesn't affect layout */
   transform-origin: center;
 }
+
+.work-experience-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #353535;
+}
+
+.work-experience-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(140, 92, 245, 0.1);
+  border: 1px solid var(--primary);
+  border-radius: 0.5rem;
+  color: var(--primary-light);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.work-experience-more-btn:hover {
+  background: rgba(140, 92, 245, 0.2);
+  color: var(--primary-lightest);
+  transform: translateY(-1px);
+}
