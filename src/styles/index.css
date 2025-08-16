@@ -88,3 +88,11 @@
   gap: .75rem;
   align-items: center;
 }
+
+/* Bootstrap Icons size adjustment - scale up while maintaining alignment */
+.socials-link svg[data-icon-type="bi"],
+.socials-link svg[data-icon-type="bootstrap"] {
+  transform: scale(1.35);
+  /* Ensure transform doesn't affect layout */
+  transform-origin: center;
+}

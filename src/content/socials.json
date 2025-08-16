@@ -7,5 +7,32 @@
     },
     "text": "GitHub",
     "link": "https://github.com/MrBandi"
+  },
+  {
+    "id": 2,
+    "icon": {
+      "type": "lucide",
+      "name": "youtube"
+    },
+    "text": "Youtube",
+    "link": "https://www.youtube.com/@MrBandi95"
+  },
+  {
+    "id": 3,
+    "icon": {
+      "type": "lucide",
+      "name": "instagram"
+    },
+    "text": "Instagram",
+    "link": "https://www.instagram.com/_xiang.0101"
+  },
+  {
+    "id": 4,
+    "icon": {
+      "type": "simple-icons",
+      "name": "telegram"
+    },
+    "text": "Telegram",
+    "link": "https://t.me/mrbandi95"
   }
 ]

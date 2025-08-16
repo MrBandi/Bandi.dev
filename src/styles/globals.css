@@ -5,7 +5,46 @@
   /* Used for links */
   --primary-light: #a277ff;
   --primary-lightest: #c2a8fd;
+  
+  /* Font weight utilities for automatic distribution */
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
 }
+
+/* Automatic font weight distribution */
+body {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Ensure proper font rendering for Chinese characters only */
+:lang(zh), :lang(zh-CN), :lang(zh-TW) {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Target Chinese characters specifically using Unicode ranges */
+@supports (font-feature-settings: normal) {
+  * {
+    font-feature-settings: "kern" 1;
+  }
+}
+
+/* Font weight mapping for better Chinese typography */
+h1 { font-weight: var(--font-weight-bold); }
+h2 { font-weight: var(--font-weight-semibold); }
+h3 { font-weight: var(--font-weight-medium); }
+h4, h5, h6 { font-weight: var(--font-weight-normal); }
+
+strong, b { font-weight: var(--font-weight-bold); }
+em { font-style: italic; font-weight: var(--font-weight-normal); }
 
 .overview-list {
   list-style-type: none;

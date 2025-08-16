@@ -44,7 +44,7 @@ const { Content: About } = await render(about!);
 			</ul>
 		</Card>
 		<Card>
-			<h3 class="no-mt">Socials</h3>
+			<h3 class="no-mt">社群平台</h3>
 			<ul class="overview-list">
 				{socials.map((item) => (
 					<li>
@@ -61,7 +61,7 @@ const { Content: About } = await render(about!);
 		<Card>
 			<div class="header-container">
 				<Icon type='lucide' name="user" width={24} height={24} class='glow-icon' />
-				<h2>About me</h2>
+				<h2>關於我</h2>
 			</div>
 			<div class="prose">
 				<About />
@@ -70,7 +70,7 @@ const { Content: About } = await render(about!);
 		<Card>
 			<div class="header-container">
 				<Icon type='lucide' name="rss" width={24} height={24} class='glow-icon' />
-				<h2>Latest Posts</h2>
+				<h2>最近新出的文章</h2>
 			</div>
 			<div class="content-container">
 				{posts.sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime()).slice(0, 2).map((post) => (
@@ -87,7 +87,7 @@ const { Content: About } = await render(about!);
 		<Card>
 			<div class="header-container">
 				<Icon type='lucide' name="folder-git" width={24} height={24} class='glow-icon' />
-				<h2>Latest Projects</h2>
+				<h2>參與開發的專案</h2>
 			</div>
 			<div class="content-container">
 				{projects.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 2).map((project) => (
@@ -104,7 +104,7 @@ const { Content: About } = await render(about!);
 		<Card>
 			<div class="header-container">
 				<Icon type='lucide' name="briefcase-business" width={24} height={24} class='glow-icon' />
-				<h2>Work Experience</h2>
+				<h2>打工人的經驗</h2>
 			</div>
 			<div class="work-experience-container">
 				{workExperience.reverse().map((entry) => (

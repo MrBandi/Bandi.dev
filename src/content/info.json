@@ -5,15 +5,23 @@
       "type": "lucide",
       "name": "cake"
     },
-    "text": "19 year old"
+    "text": "2006.01.01"
   },
   {
     "id": 2,
     "icon": {
       "type": "lucide",
-      "name": "earth"
+      "name": "university"
+    },
+    "text": "NCUT AI"
+  },
+  {
+    "id": 3,
+    "icon": {
+      "type": "lucide",
+      "name": "briefcase-business"
     },
     "type": "lucide",
-    "text": "Made in Germany"
+    "text": "Sun Digital Dev LLC"
   }
 ]

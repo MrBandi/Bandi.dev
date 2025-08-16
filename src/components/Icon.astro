@@ -1,8 +1,10 @@
 ---
 import { icons as lucideIconsJSON } from '@iconify-json/lucide';
 import { icons as simpleIconsJSON } from '@iconify-json/simple-icons';
+import { icons as bootstrapIconsJSON } from '@iconify-json/bi';
 import type { icons as lucideIcons } from '@iconify-json/lucide/icons.json';
 import type { icons as simpleIcons } from '@iconify-json/simple-icons/icons.json';
+import type { icons as bootstrapIcons } from '@iconify-json/bi/icons.json';
 import { getIconData, iconToSVG, replaceIDs } from '@iconify/utils';
 import { AstroError } from 'astro/errors';
 import type { HTMLAttributes } from 'astro/types';
@@ -22,12 +24,17 @@ interface SimpleIconsProps extends HTMLAttributes<'svg'> {
 	name: keyof typeof simpleIcons;
 }
 
-type Props = LucideProps | SimpleIconsProps;
+interface BootstrapIconsProps extends HTMLAttributes<'svg'> {
+	type: 'bootstrap' | 'bi';
+	name: keyof typeof bootstrapIcons;
+}
+
+type Props = LucideProps | SimpleIconsProps | BootstrapIconsProps;
 
 const { type, name, ...props } = Astro.props;
 const attributes = props as SVGAttributes;
 
-if (type !== 'lucide' && type !== 'simple-icons') {
+if (type !== 'lucide' && type !== 'simple-icons' && type !== 'bootstrap' && type !== 'bi') {
 	throw new AstroError(`Invalid icon type "${type}"`);
 }
 
@@ -36,8 +43,10 @@ let iconData: any;
 
 if (type === 'lucide') {
 	iconData = getIconData(lucideIconsJSON, name);
-} else {
+} else if (type === 'simple-icons') {
 	iconData = getIconData(simpleIconsJSON, name);
+} else if (type === 'bootstrap' || type === 'bi') {
+	iconData = getIconData(bootstrapIconsJSON, name);
 }
 
 if (!iconData) {
@@ -53,6 +62,9 @@ const body = replaceIDs(renderData.body);
 
 let renderAttribsHTML =
 	body.indexOf('xlink:') === -1 ? '' : ' xmlns:xlink="http://www.w3.org/1999/xlink"';
+
+// Add data attribute for icon type
+renderAttribsHTML += ` data-icon-type="${type}"`;
 
 for (const attr in attributes) {
 	renderAttribsHTML += ` ${attr}="${attributes[attr]}"`;

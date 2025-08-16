@@ -2,6 +2,7 @@ import { file, glob } from "astro/loaders";
 import { defineCollection, z, reference } from "astro:content";
 import type { icons as lucideIcons } from '@iconify-json/lucide/icons.json';
 import type { icons as simpleIcons } from '@iconify-json/simple-icons/icons.json';
+import type { icons as bootstrapIcons } from '@iconify-json/bi/icons.json';
 
 const other = defineCollection({
   loader: glob({ base: "src/content/other", pattern: "**/*.{md,mdx}" }),
@@ -17,11 +18,18 @@ const simpleIconSchema = z.object({
   name: z.custom<keyof typeof simpleIcons>(),
 });
 
+const bootstrapIconSchema = z.object({
+  type: z.union([z.literal("bi"), z.literal("bootstrap")]),
+  name: z.custom<keyof typeof bootstrapIcons>(),
+});
+
+const iconSchema = z.union([lucideIconSchema, simpleIconSchema, bootstrapIconSchema]);
+
 const quickInfo = defineCollection({
   loader: file("src/content/info.json"),
   schema: z.object({
     id: z.number(),
-    icon: z.union([lucideIconSchema, simpleIconSchema]),
+    icon: iconSchema,
     text: z.string(),
   })
 });
@@ -30,7 +38,7 @@ const socials = defineCollection({
   loader: file("src/content/socials.json"),
   schema: z.object({
     id: z.number(),
-    icon: z.union([lucideIconSchema, simpleIconSchema]),
+    icon: iconSchema,
     text: z.string(),
     link: z.string().url(),
   })
@@ -80,7 +88,7 @@ const projects = defineCollection({
     info: z.array(
       z.object({
         text: z.string(),
-        icon: z.union([lucideIconSchema, simpleIconSchema]),
+        icon: iconSchema,
         link: z.string().url().optional(),
       })
     )
