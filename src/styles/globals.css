@@ -30,6 +30,55 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Force Chinese punctuation and characters to use Noto Sans TC */
+/* Remove the local font fallback that might not work */
+
+/* Apply Chinese font with higher priority for Chinese characters */
+body {
+  font-family: 'Noto Sans TC', 'Geist', sans-serif;
+}
+
+/* Override for elements that might specifically need English fonts */
+code, pre, kbd, samp, var {
+  font-family: 'Geist Mono', 'Noto Sans TC', monospace !important;
+}
+
+/* Ensure Chinese punctuation displays correctly */
+p, div, span, h1, h2, h3, h4, h5, h6, li, td, th {
+  font-variant-east-asian: full-width;
+}
+
+/* Force all text content to prioritize Noto Sans TC for Chinese characters */
+* {
+  font-family: 'Noto Sans TC', 'Geist', sans-serif !important;
+}
+
+/* Test: Add visible indication if Noto Sans TC is not loading */
+body::before {
+  content: "Font Test: Should see Noto Sans TC for Chinese";
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+  z-index: 9999;
+  font-family: 'Noto Sans TC', serif;
+}
+
+/* Restore English-preferred fonts for specific elements */
+code, pre, kbd, samp, var, .code, .mono {
+  font-family: 'Geist Mono', 'Noto Sans TC', monospace !important;
+}
+
+/* Force proper punctuation rendering for Chinese content */
+:lang(zh), :lang(zh-CN), :lang(zh-TW) {
+  font-variant-east-asian: full-width;
+  /* Better spacing for Chinese text */
+  letter-spacing: 0.02em;
+}
+
 /* Target Chinese characters specifically using Unicode ranges */
 @supports (font-feature-settings: normal) {
   * {
