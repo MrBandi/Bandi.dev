@@ -36,7 +36,7 @@ const config = defineConfig({
       openGraph: {
         home: {
           title: 'Bandi.dev',
-          description: '一個正在經營一間開發公司的台灣大學生'
+          description: 'Welcome to Bandi.dev, the personal website of Bandi, a software developer and tech enthusiast.'
         },
         blog: {
           title: 'Blog',

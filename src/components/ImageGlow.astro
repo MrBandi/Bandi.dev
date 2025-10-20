@@ -2,15 +2,17 @@
 import { Image } from 'astro:assets';
 import type { LocalImageProps, RemoteImageProps } from 'astro:assets';
 
-type Props = LocalImageProps | RemoteImageProps;
+type Props = (LocalImageProps | RemoteImageProps) & {
+  borderRadius?: string;
+};
 
-const { ...props } = Astro.props;
+const { borderRadius, ...props } = Astro.props;
 
 const width = props.width;
 const height = props.height;
 ---
 
-<div class="glow-image">
+<div class="glow-image" style={borderRadius ? `--border-radius: ${borderRadius}` : undefined}>
   <Image {...props} />
   <Image
     width={width ? ((typeof width === 'number' ? width : Number.parseInt(width)) / 4) : undefined} 
@@ -24,11 +26,13 @@ const height = props.height;
 <style>
   .glow-image {
     position: relative;
+    --border-radius: 0;
   }
 
   .glow-image img {
     position: relative;
     z-index: 1;
+    border-radius: var(--border-radius);
   }
 
   .glow {
@@ -37,5 +41,6 @@ const height = props.height;
     left: 0;
     z-index: 0 !important;
     filter: blur(8px);
+    border-radius: var(--border-radius);
   }
 </style>

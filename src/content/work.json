@@ -1,14 +1,14 @@
 [
   {
     "id": 1,
-    "title": "工作人員",
+    "title": "CursHosting 開發者",
     "duration": "2025/01 ~ ",
     "company": "CursHosting",
     "description": "專為遊戲伺服器提供測試用機器託管服務。"
   },
   {
     "id": 2,
-    "title": "LunarHosts 經營者",
+    "title": "LunarHosts 創始者",
     "duration": "2024/05 - 2025/01",
     "company": "LunarHosts",
     "description": "提供 Discord Bot 託管、網頁託管服務。"

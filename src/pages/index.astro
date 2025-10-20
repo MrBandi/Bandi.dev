@@ -32,7 +32,7 @@ const { Content: About } = await render(about!);
 >
 	<div class="layout-grid-left" slot="left">
 		<Card class="flex-col-card">
-			<ImageGlow quality={100} width={256} height={256} src={ProfilePicture} alt="Louis looking out of a window" loading='eager' />
+			<ImageGlow quality={100} width={256} height={256} borderRadius="3rem" src={ProfilePicture} alt="Bandi Avatar" loading='eager' />
 			<h2>{name}</h2>
 			<ul class="overview-list">
 				{quickInfo.map((info) => (
@@ -104,7 +104,7 @@ const { Content: About } = await render(about!);
 		<Card>
 			<div class="header-container">
 				<Icon type='lucide' name="briefcase-business" width={24} height={24} class='glow-icon' />
-				<h2>打工人的經驗</h2>
+				<h2>打工經驗</h2>
 			</div>
 			<div class="work-experience-container">
 				{workExperience
